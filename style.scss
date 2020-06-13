@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+:root {
+  --hue-neutral: #25242a;
+  --hue-wrong: #9e0c0c;
+  --hue-correct: #1b8b3d;
+}
+
+body {
+  background-color: var(--hue-neutral);
+
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  &.correct {
+    background-color: var(--hue-correct);
+  }
+}
