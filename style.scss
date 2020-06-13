@@ -13,7 +13,6 @@
 
 body {
   background-color: var(--hue-neutral);
-
   padding: 0;
   margin: 0;
   display: flex;
@@ -25,4 +24,18 @@ body {
   &.correct {
     background-color: var(--hue-correct);
   }
+
+  &.wrong {
+    background-color: var(--hue-wrong);
+  }
+}
+
+.container {
+  height: 27rem;
+  width: 27rem;
+  background-color: #fff;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
