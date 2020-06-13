@@ -2,13 +2,15 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Helvetica", "Arial Narrow", Arial, sans-serif;
 }
 
 :root {
   --hue-neutral: #25242a;
+  --hue-neutral--light: #25242af3;
   --hue-wrong: #9e0c0c;
   --hue-correct: #1b8b3d;
+  --hue-font: #ffffff;
 }
 
 body {
@@ -33,9 +35,72 @@ body {
 .container {
   height: 27rem;
   width: 27rem;
-  background-color: #fff;
-  border-radius: 1.5rem;
+  background-color: var(--hue-font);
+  border-radius: 0.8rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0.5rem 0.5rem 0.7rem rgba(0, 0, 0, 0.63);
+  font-weight: bold;
+
+  &__questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--question {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__answers {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &--btn {
+      padding: 3rem;
+      margin: 0.5rem;
+      font-weight: bold;
+      font-size: 1.32rem;
+      border-radius: 1.15rem;
+    }
+  }
+
+  &__controls {
+    &--btn {
+      padding: 0.6rem 1rem;
+      margin: 0 1.5rem;
+      width: 8rem;
+      border-radius: 50rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  }
+
+  .btn {
+    border: none;
+    transition: all 0.2s ease;
+    background-color: var(--hue-neutral);
+    color: var(--hue-font);
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+      box-shadow: 0.1rem 0.1rem 0.3rem var(--hue-neutral);
+      background-color: var(--hue-neutral--light);
+    }
+
+    &:active {
+      box-shadow: none;
+      background-color: var(--hue-neutral);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
