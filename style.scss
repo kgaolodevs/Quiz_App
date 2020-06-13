@@ -8,8 +8,9 @@
 :root {
   --hue-neutral: #25242a;
   --hue-neutral--light: #25242af3;
-  --hue-wrong: #9e0c0c;
-  --hue-correct: #1b8b3d;
+  --hue-neutral--dark: #18171b;
+  --hue-wrong: #b40e0e;
+  --hue-correct: #22a148;
   --hue-font: #ffffff;
 }
 
@@ -102,5 +103,17 @@ body {
     &:focus {
       outline: none;
     }
+  }
+
+  .correct {
+    background-color: var(--hue-correct);
+  }
+
+  .wrong {
+    background-color: var(--hue-wrong);
+  }
+
+  .hide {
+    display: none;
   }
 }
