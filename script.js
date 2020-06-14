@@ -3,7 +3,7 @@ const data = {
   questionElement: document.querySelector(".container__questions--question"),
   questions: [
     {
-      question: "Which one is invalid as a variable?",
+      question: "Which one is an invalid variable?",
       answers: [
         { text: `apple`, correct: false },
         { text: `_apple`, correct: false },
@@ -42,10 +42,20 @@ function generateNextQuestion() {
 
 function showQuestion(question) {
   data.questionElement.innerText = question.question;
+  question.answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.innerText = data.questions.answers.text;
+    button.classList.add("btn");
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+    data.answerButtons.appendChild(button);
+  });
 }
 
 // Select the answer
-function selectAnswer() {}
+function selectAnswer(e) {}
 
 // Start game
 controls.startButton.addEventListener("click", startGame);
