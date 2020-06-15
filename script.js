@@ -11,12 +11,30 @@ const data = {
         { text: `5apple`, correct: true },
       ],
     },
+    {
+      question: "Which one is an object?",
+      answers: [
+        { text: `[[0]]`, correct: false },
+        { text: `{x : "y"}`, correct: true },
+        { text: `[{x : y}]`, correct: false },
+        { text: `() => {}`, correct: false },
+      ],
+    },
+    {
+      question: "Which is false?",
+      answers: [
+        { text: `3 +"3" === 33`, correct: true },
+        { text: `3 +"3" === "33"`, correct: false },
+        { text: `"3" + "3" === 33`, correct: false },
+        { text: `3 +"3" == 33`, correct: false },
+      ],
+    },
   ],
   answerButtons: document.querySelector(".container__answers"),
 };
 
 const shuffledQuestions = data.questions.sort(() => Math.random() - 0.5); // randomizes array
-const currentQuestionIndex = 0;
+let currentQuestionIndex = 0;
 
 const controls = {
   startButton: document.querySelector(".container__controls--start"),
@@ -57,6 +75,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
+  clearStatusClass(document.body);
   controls.nextButton.classList.add(`${actions.hide()}`);
   while (data.answerButtons.firstChild) {
     data.answerButtons.removeChild(data.answerButtons.firstChild);
