@@ -64,7 +64,29 @@ function resetState() {
 }
 
 // Select the answer
-function selectAnswer(e) {}
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset.correct;
+  setStatusClass(document.body, correct);
+  Array.from(data.answerButtons.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct);
+  });
+  controls.nextButton.classList.remove(`${actions.hide()}`);
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
+}
 
 // Start game
 controls.startButton.addEventListener("click", startGame);
