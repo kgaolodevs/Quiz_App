@@ -12,7 +12,7 @@ const data = {
       ],
     },
   ],
-  answerButtons: document.querySelector(".container__answers--btn"),
+  answerButtons: document.querySelector(".container__answers"),
 };
 
 const shuffledQuestions = data.questions.sort(() => Math.random() - 0.5); // randomizes array
@@ -20,6 +20,7 @@ const currentQuestionIndex = 0;
 
 const controls = {
   startButton: document.querySelector(".container__controls--start"),
+  nextButton: document.querySelector(".container__controls--next"),
 };
 
 const actions = {
@@ -37,6 +38,7 @@ function startGame() {
 
 // Generate next question
 function generateNextQuestion() {
+  resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
@@ -44,14 +46,21 @@ function showQuestion(question) {
   data.questionElement.innerText = question.question;
   question.answers.forEach((answer) => {
     const button = document.createElement("button");
-    button.innerText = data.questions.answers.text;
-    button.classList.add("btn");
+    button.innerText = answer.text;
+    button.classList.add("container__answers--btn", "btn");
     if (answer.correct) {
       button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
     data.answerButtons.appendChild(button);
   });
+}
+
+function resetState() {
+  controls.nextButton.classList.add(`${actions.hide()}`);
+  while (data.answerButtons.firstChild) {
+    data.answerButtons.removeChild(data.answerButtons.firstChild);
+  }
 }
 
 // Select the answer
