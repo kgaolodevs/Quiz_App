@@ -71,7 +71,12 @@ function selectAnswer(e) {
   Array.from(data.answerButtons.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
-  controls.nextButton.classList.remove(`${actions.hide()}`);
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    controls.nextButton.classList.remove(`${actions.hide()}`);
+  } else {
+    controls.startButton.innerText = "Restart";
+    controls.startButton.classList.remove(`${actions.hide()}`);
+  }
 }
 
 function setStatusClass(element, correct) {
@@ -90,3 +95,7 @@ function clearStatusClass(element) {
 
 // Start game
 controls.startButton.addEventListener("click", startGame);
+controls.nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  generateNextQuestion();
+});
